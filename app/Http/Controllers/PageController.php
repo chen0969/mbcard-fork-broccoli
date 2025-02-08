@@ -13,4 +13,8 @@ class PageController extends Controller
     public function member() {
         return view('member');
     }
+
+    public function bcard() {
+        return view('bcard');
+    }
 }

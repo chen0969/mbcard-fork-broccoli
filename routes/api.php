@@ -22,9 +22,9 @@ Route::post('login', 'MemberAuthController@login');
 Route::get('me', 'MemberController@me');
 Route::get('members', 'MemberController@index');
 Route::post('members', 'MemberController@store');
-Route::get('members/{id}', 'MemberController@show');
-Route::put('members/{id}', 'MemberController@update');
-Route::delete('members/{id}', 'MemberController@destroy');
+Route::get('members/{account}', 'MemberController@show');
+Route::put('members/{account}', 'MemberController@update');
+Route::delete('members/{account}', 'MemberController@destroy');
 
 Route::get('companies', 'CompanyController@index');
 Route::post('companies', 'CompanyController@store');

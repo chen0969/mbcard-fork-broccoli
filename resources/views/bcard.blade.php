@@ -9,7 +9,6 @@
 </head>
 <body>
     <h2>Member Profile</h2>
-    <button id="logout">Logout</button>
     <div id="member-info">
         <p><strong>Name:</strong> <span id="member-name"></span></p>
         <p><strong>Account:</strong> <span id="member-account"></span></p>
@@ -33,19 +32,13 @@
 
     <script>
         $(document).ready(function() {
-            let token = localStorage.getItem('token');
-            if (!token) {
-                alert("You need to login first!");
-                window.location.href = "/login";
-                return;
-            }
-
+            // 取得 URL 中的 account 參數
+            let urlSegments = window.location.pathname.split('/');
+            let account = urlSegments[urlSegments.length - 1];
+            
             $.ajax({
-                url: '/api/me',
+                url: '/api/members/' + account,
                 method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + token
-                },
                 success: function(response) {
                     $('#member-name').text(response.name);
                     $('#member-account').text(response.account);
@@ -77,19 +70,13 @@
                     }
                 },
                 error: function(xhr) {
-                    if (xhr.status === 401) {
-                        alert("Session expired. Please login again.");
-                        localStorage.removeItem('token');
-                        window.location.href = "/login";
+                    if (xhr.status === 404) {
+                        alert("Member not found.");
+                        window.location.href = "/";
                     } else {
                         $('#error-message').show();
                     }
                 }
-            });
-
-            $('#logout').click(function() {
-                localStorage.removeItem('token');
-                window.location.href = "/login";
             });
         });
     </script>

@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/login', 'PageController@login');
+Route::get('/member/{account}', 'PageController@bcard');
 Route::get('/admin/member', 'PageController@member');

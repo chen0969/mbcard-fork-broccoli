@@ -105,18 +105,19 @@ class MemberController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($account)
     {
-        $member = Member::with(['portfolio', 'companies'])->findOrFail($id);
+        $member = Member::with(['portfolio', 'companies'])
+                    ->where('account', $account)->first();
         return response()->json($member);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $account)
     {
-        $member = Member::findOrFail($id);
+        $member = Member::where('account', $account)->first();
 
         $request->validate([
             'name' => 'sometimes|string|max:255',
@@ -192,7 +193,7 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        $member = Member::findOrFail($id);
+        $member = Member::where('account', $account)->first();
         $member->delete();
         return response()->json(['message' => 'Member deleted successfully']);
     }
