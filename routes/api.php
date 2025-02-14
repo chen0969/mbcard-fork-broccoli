@@ -26,6 +26,12 @@ Route::get('members/{account}', 'MemberController@show');
 Route::put('members/{account}', 'MemberController@update');
 Route::delete('members/{account}', 'MemberController@destroy');
 
+Route::get('roles', 'RoleController@index');
+Route::post('roles', 'RoleController@store');
+Route::get('roles/{id}', 'RoleController@show');
+Route::put('roles/{id}', 'RoleController@update');
+Route::delete('roles/{id}', 'RoleController@destroy');
+
 Route::get('companies', 'CompanyController@index');
 Route::post('companies', 'CompanyController@store');
 Route::get('companies/{id}', 'CompanyController@show');

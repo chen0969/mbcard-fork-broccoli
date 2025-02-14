@@ -16,8 +16,9 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('account')->unique(); // card id
+            $table->string('account')->unique(); // card id: role + serial_number(to string)
             $table->string('password');
+            $table->integer('role_id');
             $table->string('mobile')->nullable();
             $table->string('email')->nullable();
             $table->string('avatar')->nullable();
@@ -25,7 +26,7 @@ class CreateMembersTable extends Migration
             $table->date('birth_day')->default('1000-01-01');
             $table->string('address')->nullable();
             $table->text('description')->nullable();
-            $table->boolean('status')->defaule(true);
+            $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
