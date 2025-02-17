@@ -1,0 +1,25 @@
+@use "_variables" as *;
+
+.icon{
+    &__large{
+        font-size: var(--spacing-64);
+    }
+}
+
+.input{
+    &__main{
+        padding: var(--spacing-4);
+        border-radius: var(--spacing-8);
+        letter-spacing: var(--spacing-2);
+    }
+}
+
+.btn{
+    &__submit{
+        background-color: $main-dark;
+        border: var(--spacing-2) solid $main-white;
+        border-radius: var(--spacing-8);
+        color: $main-white;
+        font-size: var(--text-sm);
+    }
+}
