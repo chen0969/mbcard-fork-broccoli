@@ -18,3 +18,9 @@ Route::get('/', function () {
 Route::get('/login', 'PageController@login');
 Route::get('/member/{account}', 'PageController@bcard');
 Route::get('/admin/member', 'PageController@member');
+
+
+// find password
+Route::get('/findpassword', function () {
+    return view('_login/findpassword');
+});
